@@ -24,7 +24,7 @@ function ConfigModal(props: {showConfig: Getter<boolean>, setShowConfig: Setter<
       snakeUrl = snakeUrl.trim();
       if (snakeUrl == "") {
         snakeUrl = undefined;
-      } else if (!/^https:\/\/play.battlesnake.com\/u\/[^/]+\/[^/]+\/?$/.test(snakeUrl)) {
+      } else if (!/^https:\/\/play.battlesnake.com\/leaderboard\/[^/]+\/[^/]+\/[^/]+$/.test(snakeUrl)) {
         setError("invalid format");
         return;
       }
@@ -40,7 +40,7 @@ function ConfigModal(props: {showConfig: Getter<boolean>, setShowConfig: Setter<
       <input type="text" class="w-7/12 min-w-96 p-0 px-3 rounded text-gray-700 border-gray-300" onInput={() => setError("")} use:$model={onBlur(props.snakeUrl, (val) => { snakeUrl = val; })} />
       <button class="ml-2 bg-blue-400 text-white px-2 font-bold rounded" onclick={saveAndClose}>Save</button>
       <p class="text-red-500">{error()}</p>
-      <p class="text-xs text-gray-600">It should have this format https://play.battlesnake.com/u/&lt;username&gt;/&lt;snake-name&gt;/</p>
+      <p class="text-xs text-gray-600">It should have this format https://play.battlesnake.com/leaderboard/&lt;leaderboard&gt;/&lt;username&gt;/&lt;username&gt;/stats</p>
     </div>
   </Modal>
   );
