@@ -1,6 +1,6 @@
 # Battlesnake Tester
 
-Check it out at https://jfgodoy.github.io/battlesnake-tester
+Check it out at https://EnderInvader.github.io/battlesnake-tester
 
 The app allow you to import games played in https://play.battlesnake.com/, navigate all the turns and create tests
 for your server. The test created are saved locally in your browser in a IndexedDB.
@@ -24,6 +24,8 @@ Suggestions of new features are welcome.
 ## Acknowledgement
 
 Many thanks to the team [BattlesnakeOfficial](https://github.com/BattlesnakeOfficial) and its [board](https://github.com/BattlesnakeOfficial/board) project from were I borrowed the display.
+
+[Original from jfgodoy](https://github.com/jfgodoy/battlesnake-tester)
 
 ## Credits
 
