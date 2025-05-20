@@ -31,7 +31,7 @@ export async function importGame(gameId: string): Promise<{game: Game, frames: F
     height: res.Game.Height,
     timeout: res.Game.SnakeTimeout,
   };
-  const framesUrl = `wss://engine.battlesnake.com/socket/${gameId}`;
+  const framesUrl = `wss://engine.battlesnake.com/games/${gameId}/events`;
   const frames = await fetchAllFrames(framesUrl, formatFrame);
   return {game, frames};
 }
@@ -46,8 +46,10 @@ export function fetchAllFrames(url: string, parseToFrame: (obj: any) => Frame ):
     ws.addEventListener("message", ({data}) => {
       try {
         const obj: any = JSON.parse(data);
-        const frame = parseToFrame(obj);
-        frames.set(frame.turn.toString(), frame);
+        if (obj.Type == "frame") {
+          const frame = parseToFrame(obj.Data);
+          frames.set(frame.turn.toString(), frame);
+        }
       } catch (err) {
         reject(err);
       }
