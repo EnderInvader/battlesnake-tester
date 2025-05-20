@@ -46,8 +46,10 @@ export function fetchAllFrames(url: string, parseToFrame: (obj: any) => Frame ):
     ws.addEventListener("message", ({data}) => {
       try {
         const obj: any = JSON.parse(data);
-        const frame = parseToFrame(obj.Data);
-        frames.set(frame.turn.toString(), frame);
+        if (obj.Type == "frame") {
+          const frame = parseToFrame(obj.Data);
+          frames.set(frame.turn.toString(), frame);
+        }
       } catch (err) {
         reject(err);
       }
